@@ -6,7 +6,7 @@ import { FiMonitor } from "react-icons/fi";
 export default function Navigation() {
   return (
     <main className="flex items-center justify-center min-h-[calc(100svh-(80px))]">
-      <div className="flex justify-center items-center mb-10 w-full flex-wrap">
+      <div className="flex justify-center items-center mb-14 w-full flex-wrap">
         <IconBox
           href="/pessoas"
           Icon={FaPeopleGroup}
