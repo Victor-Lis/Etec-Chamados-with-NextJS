@@ -3,7 +3,8 @@ import { PersonType } from "../@types/person";
 import { ref, get } from "firebase/database";
 import { database } from "@/utils/firebaseConfig";
 
-import TableRow from "./components/TableRow";
+import Table from "./components/Table";
+import Header from "./components/Header";
 
 export default async function Pessoas() {
   async function getPeople() {
@@ -38,22 +39,8 @@ export default async function Pessoas() {
 
   return (
     <main className="flex items-center flex-col justify-start min-h-[calc(100vh-80px)]">
-      <table className="w-10/12 min-w-80 mx-auto mt-5">
-        <thead>
-          <tr className="p-y-2 bg-slate-200 text-blue-600">
-            <th className="font-medium text-left pl-1">Nome</th>
-            <th className="font-medium text-left">Email</th>
-            <th className="font-medium text-left">#</th>
-          </tr>
-        </thead>
-        <tbody>
-          {people?.map((person, index) => {
-            return (
-              <TableRow person={person}/>
-            );
-          })}
-        </tbody>
-      </table>
+      <Header/>
+      <Table people={people}/>
     </main>
   );
 }
