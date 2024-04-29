@@ -12,8 +12,8 @@ export default function TableRow({person}: {person: PersonType}) {
       <td className="font-medium text-left pl-1">{person.nome}</td>
       <td className="font-medium text-left">{person.email}</td>
       <td className="font-medium text-left">
-        <ButtonEdit/>
-        <ButtonExclude/>
+        <ButtonEdit person={person}/>
+        <ButtonExclude firebaseKey={person.key}/>
       </td>
     </tr>
   );
