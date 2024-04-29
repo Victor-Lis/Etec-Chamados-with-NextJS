@@ -3,7 +3,7 @@ import TableRow from "../TableRow";
 
 export default function Table({people}:{people: PersonType[]}) {
   return (
-    <table className="w-10/12 min-w-80 mx-auto mt-5">
+    <table className="w-10/12 min-w-80 mx-auto my-5">
       <thead>
         <tr className="p-y-2 bg-slate-200 text-blue-600">
           <th className="font-medium text-left pl-1">Nome</th>
