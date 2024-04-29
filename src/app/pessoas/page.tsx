@@ -1,46 +1,34 @@
+"use client";
+import { useEffect, useState } from "react";
+
 import { PersonType } from "../@types/person";
 
-import { ref, get } from "firebase/database";
-import { database } from "@/utils/firebaseConfig";
-
 import Table from "./components/Table";
-import Header from "./components/Header";
+import InternHeader from "@/components/InternHeader";
 
-export default async function Pessoas() {
-  async function getPeople() {
-    const peopleRef = ref(database, "pessoas/");
+import { onValue } from "firebase/database";
+import { peopleRef } from "@/utils/firebaseConfig";
+import { handleSetPeople } from "./utils/handleSetPeople";
 
-    const data: PersonType[] = await get(peopleRef)
-    .then(async (snapshot) => {
-      let snapshotVal = await snapshot.val();
-      let keys: string[] = Object.keys(snapshotVal);
-      let data: Omit<PersonType[], "key"> = Object.values(snapshotVal);
+export default function Pessoas() {
+  const [people, setPeople] = useState<PersonType[]>([]);
 
-      let response: PersonType[] = [];
-      keys.map((key, index) => {
-        response.push({
-          key,
-          nome: data[index].nome as unknown as string,
-          email: data[index].email as unknown as string,
-        });
-      });
-      
-      return response;
-    })
-    .catch(err => {
-      console.log(err)
-      return []
-    })
+  useEffect(() => {
+    const unsubscribe = onValue(peopleRef, (snapshot) => {
+      handleSetPeople({ snapshot: snapshot, setValue: setPeople });
+    });
 
-    return data;
-  }
-
-  const people = await getPeople();
+    return () => unsubscribe();
+  }, []);
 
   return (
     <main className="flex items-center flex-col justify-start min-h-[calc(100vh-80px)]">
-      <Header/>
-      <Table people={people}/>
+      <InternHeader
+        title="Pessoas Autorizadas"
+        pathToReturn="/navegacao "
+        routerPath="/pessoas/cadastrar"
+      />
+      <Table people={people} />
     </main>
   );
 }
