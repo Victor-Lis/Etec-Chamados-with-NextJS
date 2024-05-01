@@ -12,14 +12,3 @@ export async function SignUpPerson(pessoa: Omit<PersonType, "key">){
     })
     return status
 }
-
-export async function UpdatePerson({pessoa, key}:{pessoa: Omit<PersonType, "key">, key: string}){
-    const personRef = ref(database, `pessoas/${key}`)
-    let status: boolean = await set(personRef, pessoa)
-    .then(() => true)
-    .catch((err) => {
-        console.log(err)
-        return false
-    })
-    return status
-}
