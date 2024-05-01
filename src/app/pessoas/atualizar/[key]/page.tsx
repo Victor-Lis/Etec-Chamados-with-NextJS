@@ -25,7 +25,7 @@ export default async function Atualizar({ params }: { params: RouteParams }) {
   return (
     <main className="flex items-center flex-col justify-start min-h-[calc(100vh-80px)]">
       <InternHeader
-        title="Cadastrar Pessoas Autorizadas"
+        title="Atualizar Autorização"
         pathToReturn="/pessoas"
       />
       <Form person={person}/>

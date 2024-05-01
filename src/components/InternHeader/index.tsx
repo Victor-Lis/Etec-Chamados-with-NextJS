@@ -11,7 +11,7 @@ export default function InternHeader({title, routerPath, pathToReturn}: HeaderPr
   return (
     <header className="w-10/12 min-w-80 mx-auto mt-5 flex justify-between">
       <ButtonGoBack pathToReturn={pathToReturn}/>
-      <h2 className="text-2xl font-semibold">{title}</h2>
+      <h1 className="text-lg font-semibold">{title}</h1>
       {!!routerPath ? <ButtonCreate routerPath={routerPath}/> : <span/>}
     </header>
   );
