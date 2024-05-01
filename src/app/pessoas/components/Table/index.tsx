@@ -7,7 +7,7 @@ export default function Table({people}:{people: PersonType[]}) {
       <thead>
         <tr className="p-y-2 bg-slate-200 text-blue-600">
           <th className="font-medium text-left pl-1">Nome</th>
-          <th className="font-medium text-left">Email</th>
+          <th className="font-medium text-left hidden sm:flex">Email</th>
           <th className="font-medium text-left">#</th>
         </tr>
       </thead>
