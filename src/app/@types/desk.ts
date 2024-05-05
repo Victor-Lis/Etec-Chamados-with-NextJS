@@ -1,6 +1,6 @@
 export type DeskType = {
     key: string
 
-    number: number;
+    numero: number;
     atendente: string
 }

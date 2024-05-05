@@ -11,11 +11,11 @@ import { tableRef } from "@/utils/firebaseConfig";
 import { handleSetDesk } from "./utils/handleSetDesk";
 
 export default function Mesas() {
-  const [desk, setDesk] = useState<DeskType[]>([]);
+  const [desks, setDesks] = useState<DeskType[]>([]);
 
   useEffect(() => {
     const unsubscribe = onValue(tableRef, (snapshot) => {
-      handleSetDesk({ snapshot: snapshot, setValue: setDesk });
+      handleSetDesk({ snapshot: snapshot, setValue: setDesks });
     });
 
     return () => unsubscribe();
@@ -28,7 +28,7 @@ export default function Mesas() {
         pathToReturn="/navegacao"
         routerPath="/mesas/cadastrar"
       />
-      {/* <Table people={people} /> */}
+      <Table desks={desks} />
     </main>
   );
 }

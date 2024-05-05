@@ -19,7 +19,7 @@ export async function handleSetDesk({
     keys.map((key, index) => {
       response.push({
         key,
-        number: data[index].number as unknown as number,
+        numero: data[index].numero as unknown as number,
         atendente: data[index].atendente as unknown as string,
       });
     });
