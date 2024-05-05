@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { SignUpPerson, UpdatePerson } from "../../utils/firebase";
+import { SignUpPerson } from "../../utils/firebase";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
 
