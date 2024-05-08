@@ -4,18 +4,18 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 
-import { excludePerson } from "../../utils/excludePerson";
+import { excludeFromRef } from "@/utils/exclude";
 
-export default function ButtonExclude({firebaseKey}:{firebaseKey: string}) {
+export default function ButtonExclude({firebaseRef, firebaseKey, routeReplace}:{firebaseRef: string, firebaseKey: string, routeReplace: string}) {
 
  const [loading, setLoading] = useState<boolean>(false)
  const router = useRouter()
 
  async function handleExclude(){
     setLoading(true)
-    let status = await excludePerson(firebaseKey)
+    let status = await excludeFromRef({key: firebaseKey, firebaseRef: firebaseRef})
     if(status){
-        router.replace("/pessoas")
+        router.replace(routeReplace)
         router.refresh()
     }
     setLoading(false)
