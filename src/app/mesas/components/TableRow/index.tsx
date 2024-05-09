@@ -1,10 +1,12 @@
 import { DeskType } from "@/app/@types/desk";
-import ButtonEdit from "../ButtonEdit";
-import ButtonExclude from "../ButtonExclude";
+import ButtonEdit from "@/components/ButtonEdit";
+import ButtonExclude from "@/components/ButtonExclude";
+import { useEffect } from "react";
 
 export default function TableRow({desk}: {desk: DeskType}) {
   const formatNum = (n: number) => n < 10? "0"+n : n
-
+ 
+  useEffect(() => {console.log(desk)}, [])
   return (
     <tr
       key={desk.key}
@@ -13,8 +15,8 @@ export default function TableRow({desk}: {desk: DeskType}) {
       <td className="font-medium text-left pl-1">{desk.atendente}</td>
       <td className="font-medium text-left hidden sm:table-cell">{formatNum(desk.numero)}</td>
       <td className="font-medium text-left">
-        {/* <ButtonEdit person={person}/> */}
-        {/* <ButtonExclude firebaseKey={person.key}/> */}
+        <ButtonEdit path="/mesas/atualizar/" itemKey={desk.key}/>
+        <ButtonExclude firebaseRef="mesas/" routeReplace="/mesas" firebaseKey={desk.key}/>
       </td>
     </tr>
   );
