@@ -1,12 +1,9 @@
 import { DeskType } from "@/app/@types/desk";
 import ButtonEdit from "@/components/ButtonEdit";
 import ButtonExclude from "@/components/ButtonExclude";
-import { useEffect } from "react";
 
 export default function TableRow({desk}: {desk: DeskType}) {
   const formatNum = (n: number) => n < 10? "0"+n : n
- 
-  useEffect(() => {console.log(desk)}, [])
   return (
     <tr
       key={desk.key}

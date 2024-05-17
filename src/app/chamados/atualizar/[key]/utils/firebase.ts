@@ -1,24 +1,28 @@
 import { DeskType } from "@/app/@types/desk";
 import { PersonType } from "@/app/@types/person";
+import { TicketType } from "@/app/@types/ticket";
 
 import { database, peopleRef } from "@/utils/firebaseConfig";
 import { get, push, ref, set } from 'firebase/database'
 
-export async function getDesk({key}:{key: string}){
-    const deskRef = ref(database, `mesas/${key}`)
-    let desk: Omit<DeskType, "key"> = await get(deskRef)   
+export async function getTicket({key}:{key: string}){
+    const chamadosRef = ref(database, `chamados/${key}`)
+    let chamado: Omit<TicketType, "key"> = await get(chamadosRef)   
     .then((snapshot) => snapshot.val())
     .catch((e) => console.log(e))
 
     return {
-        numero: desk?.numero,
-        atendente: desk?.atendente,
+        senha: chamado.senha,
+        atendente: chamado.atendente,
+        mesa: chamado.mesa,
+        preferencial: chamado.preferencial,
+        responsavel: chamado.responsavel,
         key,
-    } as DeskType
+    } as TicketType
 }
 
 export async function UpdateDesk({desk, key}:{desk: Omit<DeskType, "key">, key: string}){
-    const deskRef = ref(database, `mesas/${key}`)
+    const deskRef = ref(database, `chamados/${key}`)
     let status: boolean = await set(deskRef, desk)
     .then(() => true)
     .catch((err) => {
@@ -28,13 +32,13 @@ export async function UpdateDesk({desk, key}:{desk: Omit<DeskType, "key">, key: 
     return status
 }
 
-export async function getPeople(){
-    const peopleRef = ref(database, `pessoas`)
-    let snapshotVal = await get(peopleRef)   
+export async function getTickets(){
+    const ticketsRef = ref(database, `chamados`)
+    let snapshotVal = await get(ticketsRef)   
     .then((snapshot) => snapshot.val())
     .catch((e) => console.log(e))
  
-    let people: PersonType[] = Object.values(snapshotVal)
+    let tickets: PersonType[] = Object.values(snapshotVal)
     
-    return people
+    return tickets
 }

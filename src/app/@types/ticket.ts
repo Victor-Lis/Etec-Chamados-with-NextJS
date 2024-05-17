@@ -4,8 +4,8 @@ export type TicketType = {
     senha: number;
     preferencial: boolean;
 
+    mesa: number;
     responsavel: string;
-    aluno?: string;
     
     atendente: string;
 }

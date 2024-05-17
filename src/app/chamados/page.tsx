@@ -1,21 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { DeskType } from "../@types/desk";
+import { TicketType } from "../@types/ticket";
 
 import Table from "./components/Table";
 import InternHeader from "@/components/InternHeader";
 
 import { onValue } from "firebase/database";
-import { tableRef } from "@/utils/firebaseConfig";
-import { handleSetDesk } from "./utils/handleSetDesk";
+import { ticketsRef } from "@/utils/firebaseConfig";
+import { handleSetTicket } from "./utils/handleSetTicket";
 
-export default function Mesas() {
-  const [desks, setDesks] = useState<DeskType[]>([]);
+export default function Tickets() {
+  const [tickets, setTickets] = useState<TicketType[]>([]);
 
   useEffect(() => {
-    const unsubscribe = onValue(tableRef, (snapshot) => {
-      handleSetDesk({ snapshot: snapshot, setValue: setDesks });
+    const unsubscribe = onValue(ticketsRef, (snapshot) => {
+      handleSetTicket({ snapshot: snapshot, setValue: setTickets });
     });
 
     return () => unsubscribe();
@@ -28,8 +28,7 @@ export default function Mesas() {
         pathToReturn="/navegacao"
         routerPath="/chamados/cadastrar"
       />
-      <Table desks={desks} />
+      <Table tickets={tickets} />
     </main>
   );
 }
- 
