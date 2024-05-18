@@ -30,6 +30,7 @@ export async function handleSetTicket({
       });
     });
   }
-
+  // console.log(response)
+  
   setValue(response);
 }
