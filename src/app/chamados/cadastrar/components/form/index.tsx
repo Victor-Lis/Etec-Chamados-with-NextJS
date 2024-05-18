@@ -1,29 +1,24 @@
 "use client";
 
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { SignUpDesk } from "../../utils/firebase";
+import { SignUpTicket } from "../../utils/firebase";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
-
-import { getPeople } from '../../utils/firebase'
-import { PersonType } from "@/app/@types/person";
-import Select from "../select";
 
 export default function Form() {
   const router = useRouter();
 
-  const [pessoas, setPessoas] = useState<PersonType[]>([])
-  const [atendente, setAtendente] = useState<string>('');
-  const [numero, setNumero] = useState<string>('');
+  const [responsavel, setResponsavel] = useState<string>('');
+  const [preferencial, setPreferencial] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true);
-    if (!!atendente && !!numero) {
-      let status = await SignUpDesk({
-        numero: parseInt(numero),
-        atendente,
+    if (!!responsavel) {
+      let status = await SignUpTicket({
+        responsavel, 
+        preferencial,
       });
 
       if (status) {
@@ -34,17 +29,6 @@ export default function Form() {
     setLoading(false);
   }
 
-  async function handleGetPeople(){
-    let people = await getPeople()
-    if(!!people.length){
-      setPessoas(people)
-    }
-  }
-
-  useEffect(() => {
-    handleGetPeople()
-  }, [])
-
   return (
     <div className="bg-white shadow-lg p-3 rounded mt-14">
       <form
@@ -52,16 +36,21 @@ export default function Form() {
         onSubmit={(e) => handleSubmit(e)}
       >
         <div className="flex items-center justify-around w-full mt-5">
-          <h2 className="mr-2">Atendente</h2>
-          <Select people={pessoas} setAtendente={setAtendente}/>
-        </div>
-        <div className="flex items-center justify-around w-full mt-10">
-          <h2 className="mr-2">Número da Mesa</h2>
+          <h2 className="mr-2">Responsável</h2>
           <input
-            type="number"
+            type="text"
             className="border-b-2 border-b-gray-300 px-1 flex-1"
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
+            value={responsavel}
+            onChange={(e) => setResponsavel(e.target.value)}
+          />
+        </div>
+        <div className="flex items-center justify-between w-full mt-10">
+          <h2 className="mr-2">Preferêncial</h2>
+          <input
+            type="checkbox"
+            className="border-b-2 border-b-gray-300 px-1 accent-blue-600"
+            checked={preferencial}
+            onChange={(e) => setPreferencial(!preferencial)}
           />
         </div>
         <button

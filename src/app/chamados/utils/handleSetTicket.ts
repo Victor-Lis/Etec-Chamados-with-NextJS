@@ -30,7 +30,8 @@ export async function handleSetTicket({
       });
     });
   }
-  // console.log(response)
+  
+  response.sort((a, b) => a.senha - b.senha)
   
   setValue(response);
 }
