@@ -3,9 +3,8 @@ export type TicketType = {
 
     senha: number;
     preferencial: boolean;
-
-    mesa: number;
     responsavel: string;
-    
-    atendente: string;
+
+    mesa?: number;
+    atendente?: string;
 }

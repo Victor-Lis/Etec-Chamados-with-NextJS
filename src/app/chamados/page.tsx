@@ -27,6 +27,16 @@ export default function Tickets() {
         title="Chamados"
         pathToReturn="/navegacao"
         routerPath="/chamados/cadastrar"
+        subtitle={
+          <div className="w-full flex justify-start items-start mt-4">
+            <div className="flex justify-start items-center mr-2">
+              <span className="w-3 h-3 bg-red-600 mr-1 border-slate-600 border-[1px]"></span><h2>Atendimento Preferêncial</h2>
+            </div>
+            <div className="flex justify-start items-center">
+              <span className="w-3 h-3 bg-black mr-1 border-slate-600 border-[1px]"></span><h2>Atendimento Comum</h2>
+            </div>
+          </div>  
+        }
       />
       <Table tickets={tickets} />
     </main>

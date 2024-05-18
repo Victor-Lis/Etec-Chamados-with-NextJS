@@ -10,11 +10,10 @@ export default function TableRow({ticket}: {ticket: TicketType}) {
       key={ticket.key}
       className="border-b-2 border-b-slate-200 h-16 last:border-b-0 bg-slate-100"
     >
-      <td className="font-medium text-left pl-1 border-l-2 border-r-2">{formatNum(ticket.senha)}</td>
-      <td className="font-medium text-left border-r-2">{ticket.preferencial ? "Sim" : "Não"}</td>
-      <td className="font-medium text-left border-r-2">{ticket.mesa}</td>
-      <td className="font-medium text-left border-r-2 hidden sm:table-cell">{ticket.atendente}</td>
-      <td className="font-medium text-left border-r-2">{ticket.responsavel}</td>
+      <td className={`font-medium text-left pl-1 ${ticket.preferencial && "text-red-600"}`}>{formatNum(ticket.senha)}</td>
+      <td className="font-medium text-left">{ticket.mesa}</td>
+      <td className="font-medium text-left hidden sm:table-cell">{ticket.atendente}</td>
+      <td className={`font-medium text-left ${ticket.preferencial && "text-red-600"}`}>{ticket.responsavel}</td>
       <td className="font-medium text-left hidden sm:table-cell">
         <ButtonEdit path="/mesas/atualizar/" itemKey={ticket.key}/>
         <ButtonExclude firebaseRef="mesas/" routeReplace="/mesas" firebaseKey={ticket.key}/>
