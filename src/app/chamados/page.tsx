@@ -40,7 +40,7 @@ export default function Tickets() {
                 <h2>Atendimento Comum</h2>
               </div>
               <div className="flex justify-start items-center">
-                <span className="w-3 h-3 bg-slate-200 mr-1 border-slate-600 border-[1px]"></span>
+                <span className="w-3 h-3 bg-slate-200/80 mr-1 border-slate-600 border-[1px]"></span>
                 <h2>Atendido</h2>
               </div>
             </div>
