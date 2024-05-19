@@ -9,6 +9,7 @@ import InternHeader from "@/components/InternHeader";
 import { onValue } from "firebase/database";
 import { ticketsRef } from "@/utils/firebaseConfig";
 import { handleSetTicket } from "./utils/handleSetTicket";
+import ButtonNext from "./components/ButtonNext";
 
 export default function Tickets() {
   const [tickets, setTickets] = useState<TicketType[]>([]);
@@ -28,14 +29,23 @@ export default function Tickets() {
         pathToReturn="/navegacao"
         routerPath="/chamados/cadastrar"
         subtitle={
-          <div className="w-full flex justify-start items-start mt-4">
-            <div className="flex justify-start items-center mr-2">
-              <span className="w-3 h-3 bg-red-600 mr-1 border-slate-600 border-[1px]"></span><h2>Atendimento Preferêncial</h2>
+          <div className="w-full flex justify-between items-center mt-4">
+            <div className="flex-1 flex flex-wrap justify-start items-start">
+              <div className="flex justify-start items-center mr-3">
+                <span className="w-3 h-3 bg-red-600 mr-1 border-slate-600 border-[1px]"></span>
+                <h2>Atendimento Preferêncial</h2>
+              </div>
+              <div className="flex justify-start items-center mr-3">
+                <span className="w-3 h-3 bg-black mr-1 border-slate-600 border-[1px]"></span>
+                <h2>Atendimento Comum</h2>
+              </div>
+              <div className="flex justify-start items-center">
+                <span className="w-3 h-3 bg-slate-200 mr-1 border-slate-600 border-[1px]"></span>
+                <h2>Atendido</h2>
+              </div>
             </div>
-            <div className="flex justify-start items-center">
-              <span className="w-3 h-3 bg-black mr-1 border-slate-600 border-[1px]"></span><h2>Atendimento Comum</h2>
-            </div>
-          </div>  
+            <ButtonNext/>
+          </div>
         }
       />
       <Table tickets={tickets} />
