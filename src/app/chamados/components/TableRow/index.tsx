@@ -8,7 +8,7 @@ export default function TableRow({ticket}: {ticket: TicketType}) {
   return (
     <tr
       key={ticket.key}
-      className="border-b-2 border-b-slate-200 h-16 last:border-b-0 bg-slate-100"
+      className={`border-b-2 border-b-slate-200 h-16 last:border-b-0 ${ticket.atendido ? "bg-slate-200/90" : "bg-slate-100"}`}
     >
       <td className={`font-medium text-left pl-1 ${ticket.preferencial && "text-red-600"}`}>{formatNum(ticket.senha)}</td>
       <td className="font-medium text-left">{ticket.mesa}</td>

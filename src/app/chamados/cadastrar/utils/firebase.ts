@@ -20,6 +20,9 @@ export async function SignUpTicket(ticket: Omit<TicketType, "key" | "senha" | "m
         responsavel: ticket.responsavel,
         preferencial: ticket.preferencial,
         senha: (!!tickets.length && !!tickets) ? tickets.sort((a,b) => b.senha - a.senha)[0].senha+1 : 1,
+        atendido: false,
+        atendente: "",
+        mesa: "",
     } as Omit<TicketType, "key">
     let status: boolean = await push(ticketsRef, newTicket)
     .then(() => true)

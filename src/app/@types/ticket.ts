@@ -5,6 +5,8 @@ export type TicketType = {
     preferencial: boolean;
     responsavel: string;
 
-    mesa?: number;
+    mesa?: number | string;
     atendente?: string;
+
+    atendido: boolean;
 }

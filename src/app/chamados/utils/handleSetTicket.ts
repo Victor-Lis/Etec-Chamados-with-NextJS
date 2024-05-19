@@ -19,14 +19,17 @@ export async function handleSetTicket({
     keys.map((key, index) => {
       response.push({
         key,
-        
+
         senha: data[index].senha as unknown as number,
+        
+        responsavel: data[index].responsavel as unknown as string,
         preferencial: data[index].preferencial as unknown as boolean,
 
+        
         mesa: data[index].mesa as unknown as number, 
-        responsavel: data[index].responsavel as unknown as string,
-
         atendente: data[index].atendente as unknown as string,
+
+        atendido: data[index].atendido as unknown as boolean
       });
     });
   }
