@@ -3,6 +3,7 @@ import ButtonEdit from "@/components/ButtonEdit";
 import ButtonExclude from "@/components/ButtonExclude";
 import { formatDate } from "@/utils/formatDate";
 import { formatNum } from "@/utils/formatNum";
+import ButtonEndTime from "./components/ButtonEndTime";
 
 export default function TableRow({ticket}: {ticket: TicketType}) {
   return (
@@ -19,6 +20,7 @@ export default function TableRow({ticket}: {ticket: TicketType}) {
         <p className="text-gray-600">{ticket.inicioHora} - {ticket?.fimHora ? ticket?.fimHora : "..."}</p>
       </td>
       <td className="font-medium text-left hidden sm:table-cell">
+        {!ticket.atendido && <ButtonEndTime routeReplace="/chamados" firebaseRef="chamados/" firebaseKey={ticket.key}/>}
         <ButtonEdit path="/chamados/atualizar/" itemKey={ticket.key}/>
         <ButtonExclude firebaseRef="chamados/" routeReplace="/chamados" firebaseKey={ticket.key}/>
       </td>

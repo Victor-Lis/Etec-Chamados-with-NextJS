@@ -2,7 +2,6 @@
 import { FiEdit } from "react-icons/fi";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function ButtonEdit({path, itemKey}:{path: string, itemKey: string}) {
  const router = useRouter()
