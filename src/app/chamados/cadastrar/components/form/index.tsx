@@ -48,7 +48,7 @@ export default function Form() {
           <h2 className="mr-2">Preferêncial</h2>
           <input
             type="checkbox"
-            className="border-b-2 border-b-gray-300 px-1 accent-blue-600"
+            className="border-b-2 border-b-gray-300 px-1 accent-blue-600 hover:cursor-pointer hover:scale-110 duration-300"
             checked={preferencial}
             onChange={(e) => setPreferencial(!preferencial)}
           />

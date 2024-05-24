@@ -8,7 +8,7 @@ export type TicketType = {
     mesa?: number | string;
     atendente?: string;
 
-    date: Date;
+    date: string;
     inicioHora: string;
     fimHora?: string;
 
