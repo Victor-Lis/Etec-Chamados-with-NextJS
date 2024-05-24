@@ -15,8 +15,8 @@ export default function TableRow({ticket}: {ticket: TicketType}) {
       <td className="font-medium text-left hidden sm:table-cell">{ticket.atendente}</td>
       <td className={`font-medium text-left ${ticket.preferencial && "text-red-600"}`}>{ticket.responsavel}</td>
       <td className="font-medium text-left hidden sm:table-cell">
-        <ButtonEdit path="/mesas/atualizar/" itemKey={ticket.key}/>
-        <ButtonExclude firebaseRef="mesas/" routeReplace="/mesas" firebaseKey={ticket.key}/>
+        <ButtonEdit path="/chamados/atualizar/" itemKey={ticket.key}/>
+        <ButtonExclude firebaseRef="chamados/" routeReplace="/chamados" firebaseKey={ticket.key}/>
       </td>
     </tr>
   );
