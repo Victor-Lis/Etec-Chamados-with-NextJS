@@ -1,10 +1,6 @@
 "use client"
 import Loading from "@/components/Loading";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { FiTrash2 } from "react-icons/fi";
-
-import { handleNext } from "../../utils/handleNext";
+import { useState } from "react";
 
 export default function ButtonNext() {
 

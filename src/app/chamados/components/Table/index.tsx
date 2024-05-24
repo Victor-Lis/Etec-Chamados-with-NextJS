@@ -10,7 +10,7 @@ export default function Table({tickets}:{tickets: TicketType[]}) {
           <th className="font-medium text-left">Mesa</th>
           <th className="font-medium text-left hidden sm:table-cell">Atendente</th>
           <th className="font-medium text-left">Responsável</th>
-          <th className="font-medium text-left hidden sm:table-cell">Duração</th>
+          <th className="font-medium text-left">Duração</th>
           <th className="font-medium text-left hidden sm:table-cell">#</th>
         </tr>
       </thead>

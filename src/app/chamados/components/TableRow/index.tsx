@@ -1,7 +1,6 @@
 import { TicketType } from "@/app/@types/ticket";
 import ButtonEdit from "@/components/ButtonEdit";
 import ButtonExclude from "@/components/ButtonExclude";
-import { useEffect } from "react";
 
 export default function TableRow({ticket}: {ticket: TicketType}) {
   const formatNum = (n: number) => n < 10? "0"+n : n

@@ -10,6 +10,7 @@ import { onValue } from "firebase/database";
 import { ticketsRef } from "@/utils/firebaseConfig";
 import { handleSetTicket } from "./utils/handleSetTicket";
 import ButtonNext from "./components/ButtonNext";
+import ButtonAnalytics from "./components/ButtonAnalytics";
 
 export default function Tickets() {
   const [tickets, setTickets] = useState<TicketType[]>([]);
@@ -44,6 +45,7 @@ export default function Tickets() {
                 <h2>Atendido</h2>
               </div>
             </div>
+            <ButtonAnalytics/>
             <ButtonNext/>
           </div>
         }
