@@ -8,5 +8,9 @@ export type TicketType = {
     mesa?: number | string;
     atendente?: string;
 
+    date: Date;
+    inicioHora: string;
+    fimHora?: string;
+
     atendido: boolean;
 }

@@ -29,7 +29,11 @@ export async function handleSetTicket({
         mesa: data[index].mesa as unknown as number, 
         atendente: data[index].atendente as unknown as string,
 
-        atendido: data[index].atendido as unknown as boolean
+        atendido: data[index].atendido as unknown as boolean,
+
+        date: data[index].date as unknown as Date,
+        inicioHora: data[index].inicioHora as unknown as string,
+        fimHora: data[index].fimHora as unknown as string
       });
     });
   }
